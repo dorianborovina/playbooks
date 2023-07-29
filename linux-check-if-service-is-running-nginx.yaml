@@ -1,5 +1,5 @@
 - name: checking service status
-  hosts: inhouse
+  hosts: all
   tasks:
   - name: checking service status
     command: systemctl status "{{ item }}"
