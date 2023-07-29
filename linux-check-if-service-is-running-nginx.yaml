@@ -1,0 +1,25 @@
+- name: checking service status
+  hosts: inhouse
+  tasks:
+  - name: checking service status
+    command: systemctl status "{{ item }}"
+    with_items:
+    - fail2ban
+    - cron
+    - mariadb
+    - runcloud-agent
+    - ssh
+    - apache2-rc
+    - netdata
+    - firewalld
+    - qemu-guest-agent
+    - nginx-rc
+    - postfix@-
+    - php82rc-fpm
+    - php80rc-fpm
+    - php74rc-fpm
+    register: result
+    ignore_errors: yes
+  - name: showing report
+    debug:
+     var: result
